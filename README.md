@@ -1,22 +1,23 @@
 # medley
 
-TODO: Write a description here
+A shard for helping to write music.
 
 ## Installation
 
-
-TODO: Write installation instructions here
+* `git clone git@github.com:jwoertink/medley.git`
+* `cd medley/`
+* `crystal deps` ? I'm stll not sure how all this works yet
 
 
 ## Usage
 
-
-
-TODO: Write usage instructions here
+```crystal
+Medley::Notes.by_scale('Cmaj') #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
+```
 
 ## Development
 
-TODO: Write development instructions here
+* `crystal spec`
 
 ## Contributing
 
