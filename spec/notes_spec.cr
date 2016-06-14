@@ -2,12 +2,12 @@ require "./spec_helper"
 
 describe Medley::Notes do
   describe "#by_scale" do
-    it "returns an array of letters in C major scale order" do
-      Medley::Notes.by_scale("Cmaj").should eq ["C", "D", "E", "F", "G", "A", "B", "C"]
+    pending "returns an array of letters in C major scale order" do
+      Medley::Notes.by_scale("Cmaj").should eq(["C", "D", "E", "F", "G", "A", "B", "C"])
     end
 
-    it "returns an array of letters in F major scale order" do
-      Medley::Notes.by_scale("Fmaj").should eq ["F", "G", "A", "Bb", "C", "D", "E", "F"]
+    pending "returns an array of letters in F major scale order" do
+      Medley::Notes.by_scale("Fmaj").should eq(["F", "G", "A", "Bb", "C", "D", "E", "F"])
     end
   end
 

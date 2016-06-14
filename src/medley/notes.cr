@@ -30,8 +30,8 @@ module Medley
         note = "#{@current_note}#"
         return ALIASES[note]? || note
       elsif sharp?
-        idx = NOTE_NAMES.index(@current_note[0])
-        NOTE_NAMES[idx + 1]? || NOTE_NAMES[0]
+        idx = NOTE_NAMES.index(@current_note[0].to_s)
+        return NOTE_NAMES[idx + 1] if idx
       end
     end
   end
