@@ -3,12 +3,6 @@ module Medley
     NOTE_NAMES = %w(A B C D E F G)
     ALIASES = {"B#": "C", "Cb": "B", "E#": "F", "Fb": "E"}
 
-    # 1 1 .5 1 1 1 .5
-    def self.by_scale(scale : String)
-      scale.match(/(\w+)(maj|min)/)
-
-    end
-
     def initialize(current_note : String)
       @current_note = current_note
     end
