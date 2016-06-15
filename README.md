@@ -1,18 +1,35 @@
 # medley
 
-A shard for helping to write music.
+A mixture of music related methods.
 
 ## Installation
+
+Install locally
 
 * `git clone git@github.com:jwoertink/medley.git`
 * `cd medley/`
 * `crystal deps` ? I'm stll not sure how all this works yet
 
+or add as a dependecy to your project
+
+```yaml
+dependencies:
+  medley:
+    github: jwoertink/medley
+```
 
 ## Usage
 
 ```crystal
+require "medley"
+
+# List out a scale
 Medley::Notes.by_scale('Cmaj') #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
+
+# Play with a note
+note = Medley::Notes.new("G")
+puts note.halfstep_up # => G#
+puts note.wholestep_up # => A
 ```
 
 ## Development
@@ -21,7 +38,7 @@ Medley::Notes.by_scale('Cmaj') #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/medley/fork )
+1. Fork it ( https://github.com/jwoertink/medley/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -29,4 +46,4 @@ Medley::Notes.by_scale('Cmaj') #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name]) Jeremy Woertink - creator, maintainer
+- [jwoertink](https://github.com/jwoertink) Jeremy Woertink - creator, maintainer
