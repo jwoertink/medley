@@ -24,12 +24,14 @@ dependencies:
 require "medley"
 
 # List out a scale
-Medley::Notes.by_scale('Cmaj') #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
+scale = Medley::Scales.new('Cmaj') 
+scale.notes #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
 
 # Play with a note
 note = Medley::Notes.new("G")
 puts note.halfstep_up # => G#
 puts note.wholestep_up # => A
+puts note.sharp? #=> false
 ```
 
 ## Development
