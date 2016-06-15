@@ -7,7 +7,6 @@ module Medley
 
     @pattern : Array(String)
     @root : String
-    #@notes : Array(String)
 
     def initialize(scale : String)
       scale.match(/(\w+)(maj|min)/)
