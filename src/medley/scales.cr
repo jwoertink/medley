@@ -24,12 +24,20 @@ module Medley
       note = Medley::Notes.new(@root)
       @notes << note.name
       @pattern.each do |step|
-        case step
+        new_note = case step
         when "1"
-          @notes << note.wholestep_up
+          note.wholestep_up
         when ".5"
-          @notes << note.halfstep_up
+          note.halfstep_up
+        else
+          ""
         end
+        # TODO: find a better way to handle this
+        # need to do this because if the scale has A and A#, the A# should be Bb
+        #if @notes.select { |n| n[0].to_s == new_note[0].to_s }.any?
+        #  new_note = Medley::Notes::ALIASES[new_note]
+        #end
+        @notes << new_note
         note = Medley::Notes.new(@notes.last)
       end
     end

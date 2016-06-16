@@ -1,7 +1,9 @@
 module Medley
   class Notes
     NOTE_NAMES = %w(A B C D E F G)
-    ALIASES = {"B#": "C", "Cb": "B", "E#": "F", "Fb": "E"}
+    ALIASES = {"B#": "C", "Cb": "B", "E#": "F", "Fb": "E",
+               "A#": "Bb", "Bb": "A#", "C#": "Db", "Db": "C#",
+               "D#": "Eb", "Eb": "D#", "F#": "Gb", "Gb": "F#"}
 
     def initialize(current_note : String)
       @current_note = current_note
