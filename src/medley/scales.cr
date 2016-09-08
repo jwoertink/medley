@@ -34,9 +34,14 @@ module Medley
         end
         # TODO: find a better way to handle this
         # need to do this because if the scale has A and A#, the A# should be Bb
-        #if @notes.select { |n| n[0].to_s == new_note[0].to_s }.any?
-        #  new_note = Medley::Notes::ALIASES[new_note]
-        #end
+        # Problem is I need to replace the offending note with the alias.
+        # The @notes array could look like ["Gb", "G"] or ["A", "A#"]
+        # The offending note may not always be a b or #. How do I tell which note needs to be aliased? iterate over offending notes, and if an alias exists, then replace it and hope that was the right one?
+        if offending = @notes.find { |n| n[0] == new_note[0] && n.size > 1 }
+          new_note = Medley::Notes::ALIASES[new_note]
+          idx = @notes.index(offending)
+          @notes[idx] = new_note
+        end
         @notes << new_note
         note = Medley::Notes.new(@notes.last)
       end
