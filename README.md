@@ -8,7 +8,7 @@ Install locally
 
 * `git clone git@github.com:jwoertink/medley.git`
 * `cd medley/`
-* `crystal deps` ? I'm stll not sure how all this works yet
+* `icr -r ./src/medley.cr`
 
 or add as a dependecy to your project
 
