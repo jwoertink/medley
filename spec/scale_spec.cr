@@ -17,5 +17,15 @@ describe Medley::Scale do
       scale = Medley::Scale.new("Dmaj")
       scale.notes.should eq(["D", "E", "F#", "G", "A", "B", "C#", "D"])
     end
+
+    it "returns an array of letters Bb Major scale order" do
+      scale = Medley::Scale.new("Bbmaj")
+      scale.notes.should eq(["Bb", "C", "D", "Eb", "F", "G", "A", "Bb"])
+    end
+
+    it "returns an array of letters in the C minor scale order" do
+      scale = Medley::Scale.new("Cmin")
+      scale.notes.should eq(["C", "D", "Eb", "F", "G", "Ab", "Bb", "C"])
+    end
   end
 end
