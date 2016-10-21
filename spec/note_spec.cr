@@ -56,4 +56,31 @@ describe Medley::Note do
     end
   end
 
+  describe ".wholestep_up" do
+    it "returns E when given D" do
+      note = Medley::Note.new("D")
+      note.wholestep_up.should eq "E"
+    end
+
+    it "returns G when given F" do
+      note = Medley::Note.new("F")
+      note.wholestep_up.should eq "G"
+    end
+
+    it "returns D# when given C#" do
+      note = Medley::Note.new("C#")
+      note.wholestep_up.should eq "D#"
+    end
+
+    it "returns Bb when given Ab" do
+      note = Medley::Note.new("Ab")
+      note.wholestep_up.should eq "Bb"
+    end
+
+    it "returns Dbb when given Cbb" do
+      note = Medley::Note.new("Cbb")
+      note.wholestep_up.should eq "Dbb"
+    end
+  end
+
 end
