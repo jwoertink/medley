@@ -77,6 +77,11 @@ describe Medley::Note do
       note.wholestep_up.should eq "Bb"
     end
 
+    it "returns C when given Bb" do
+      note = Medley::Note.new("Bb")
+      note.wholestep_up.should eq "C"
+    end
+
     it "returns Dbb when given Cbb" do
       note = Medley::Note.new("Cbb")
       note.wholestep_up.should eq "Dbb"

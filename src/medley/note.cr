@@ -94,10 +94,8 @@ module Medley
     def wholestep_up
       up_halfstep = Note.new(halfstep_up)
       new_note = Note.new(up_halfstep.halfstep_up)
-      if new_note.double_sharp?
-        ALIASES[new_note.name]
-      elsif new_note.root_matches?(self)
-        new_note.next_root + name[1..-1]
+      if new_note.double_sharp? || new_note.root_matches?(self)
+        ALIASES[new_note.name]? || new_note.next_root + name[1..-1]
       else
         new_note.name
       end

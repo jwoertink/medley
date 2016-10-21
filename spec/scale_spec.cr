@@ -8,10 +8,10 @@ describe Medley::Scale do
       scale.notes.should eq(["C", "D", "E", "F", "G", "A", "B", "C"])
     end
 
-    #it "returns an array of letters in F major scale order" do
-    #  scale = Medley::Scale.new("Fmaj")
-    #  scale.notes.should eq(["F", "G", "A", "Bb", "C", "D", "E", "F"])
-    #end
+    it "returns an array of letters in F major scale order" do
+      scale = Medley::Scale.new("Fmaj")
+      scale.notes.should eq(["F", "G", "A", "Bb", "C", "D", "E", "F"])
+    end
 
     it "returns an array of letters in D Major scale order" do
       scale = Medley::Scale.new("Dmaj")
