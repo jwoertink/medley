@@ -1,5 +1,5 @@
 module Medley
-  class Notes
+  class Note
     NOTE_NAMES = %w(A B C D E F G)
     ALIASES = {"A##": "B", "B##": "C#", "C##": "D", "D##": "E", 
                "E##": "F#", "F##": "G", "G##": "A"} 
@@ -64,7 +64,7 @@ module Medley
     end
 
     def wholestep_up
-      new_note = Medley::Notes.new(halfstep_up, @current_note)
+      new_note = Note.new(halfstep_up, @current_note)
       new_note.halfstep_up
     end
   end
