@@ -28,4 +28,11 @@ describe Medley::Scale do
       scale.notes.should eq(["C", "D", "Eb", "F", "G", "Ab", "Bb", "C"])
     end
   end
+
+  describe ".key" do
+    it "returns the key with 2 flats" do
+      scale = Medley::Scale.new("Bbmaj")
+      scale.key.flats.size.should eq 2
+    end
+  end
 end

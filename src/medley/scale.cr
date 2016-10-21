@@ -5,10 +5,13 @@ module Medley
       "min": %w(1 .5 1 1 .5 1 1)
     }
 
+    getter :name
+
     @pattern : Array(String)
     @root : String
 
     def initialize(scale : String)
+      @name = scale
       scale.match(/(\w+)(maj|min)/)
       @pattern = PATTERNS[$2]
       @root = $1
@@ -18,6 +21,10 @@ module Medley
 
     def notes
       @notes
+    end
+
+    def key
+      Medley::Key.new(self)
     end
 
     private def build_scale
