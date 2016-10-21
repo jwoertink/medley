@@ -83,4 +83,16 @@ describe Medley::Note do
     end
   end
 
+  describe ".next_root" do
+    it "returns C when given B" do
+      note = Medley::Note.new("B")
+      note.next_root.should eq "C"
+    end
+
+    it "returns F when given E" do
+      note = Medley::Note.new("E")
+      note.next_root.should eq "F"
+    end
+  end
+
 end
