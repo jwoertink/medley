@@ -34,6 +34,26 @@ describe Medley::Note do
       note = Medley::Note.new("G#")
       note.halfstep_down.should eq "G"
     end
+
+    it "returns B when given B#" do
+      note = Medley::Note.new("B#")
+      note.halfstep_down.should eq "B"
+    end
+
+    it "returns Dbb when given Db" do
+      note = Medley::Note.new("Db")
+      note.halfstep_down.should eq "Dbb"
+    end
+
+    it "returns Cbb when given Cb" do
+      note = Medley::Note.new("Cb")
+      note.halfstep_down.should eq "Cbb"
+    end
+
+    it "returns Ebb when given Fbb" do
+      note = Medley::Note.new("Fbb")
+      note.halfstep_down.should eq "Ebb"
+    end
   end
 
 end
