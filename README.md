@@ -16,6 +16,7 @@ or add as a dependecy to your project
 dependencies:
   medley:
     github: jwoertink/medley
+    branch: master
 ```
 
 ## Usage
@@ -23,15 +24,18 @@ dependencies:
 ```crystal
 require "medley"
 
-# List out a scale
-scale = Medley::Scales.new('Cmaj') 
-scale.notes #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
-
 # Play with a note
-note = Medley::Notes.new("G")
-puts note.halfstep_up # => G#
-puts note.wholestep_up # => A
+note = Medley::Note.new("G")
+puts note.halfstep_up # => "G#"
+puts note.wholestep_up # => "A"
 puts note.sharp? #=> false
+puts note.natural? #=> true
+puts note.next_root #=> "A"
+puts note.halfstep_down #=> "Gb"
+puts note.name #=> "G"
+
+other_note = Medley::Note.new("G#")
+other_note.root_matches?(note) #=> true
 ```
 
 ## Development
