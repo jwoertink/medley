@@ -40,6 +40,7 @@ module Medley
         if offending = @notes.find { |n| n[0] == new_note[0] && n.size > 1 }
           new_note = Medley::Notes::ALIASES[new_note]
           idx = @notes.index(offending)
+          return if idx.nil?
           @notes[idx] = new_note
         end
         @notes << new_note
