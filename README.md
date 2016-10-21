@@ -36,6 +36,10 @@ puts note.name #=> "G"
 
 other_note = Medley::Note.new("G#")
 other_note.root_matches?(note) #=> true
+
+# Play with a scale
+scale = Medley::Scale.new("Cmaj")
+puts scale.notes #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
 ```
 
 ## Development
