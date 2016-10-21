@@ -57,9 +57,22 @@ module Medley
       when .double_flat?
         @current_note[0..1].to_s
       when .double_sharp?
-        puts "double sharp #{@current_note}"
         aliased = ALIASES[@current_note]
         return "#{aliased}#"
+      end
+    end
+
+    def halfstep_down
+      case self
+      when .natural?, .flat?
+        return "#{@current_note}b"
+      when .sharp?
+        return @current_note[0].to_s
+      when .double_sharp?
+        @current_note[0..1].to_s
+      when .double_flat?
+        aliased = ALIASES[@current_note]
+        return "#{aliased}b"
       end
     end
 

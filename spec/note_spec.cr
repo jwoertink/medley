@@ -29,4 +29,11 @@ describe Medley::Note do
     end
   end
 
+  describe ".halfstep_down" do
+    it "returns G when given G#" do
+      note = Medley::Note.new("G#")
+      note.halfstep_down.should eq "G"
+    end
+  end
+
 end
