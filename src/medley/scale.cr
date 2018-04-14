@@ -27,6 +27,16 @@ module Medley
       Medley::Key.new(self)
     end
 
+    def pattern(*values : Int32)
+      raise Medley::InvalidPatternError.new("Note arrays are not 0 based index") if values.includes?(0)
+      results = [] of String
+      values.each do |v|
+        v = v % 7 if v > 7
+        results << notes[v - 1]
+      end
+      results
+    end
+
     private def build_scale
       note = Medley::Note.new(@root)
       @notes << note.name

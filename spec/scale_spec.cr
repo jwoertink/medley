@@ -35,4 +35,21 @@ describe Medley::Scale do
       scale.key.flats.size.should eq 2
     end
   end
+
+  describe ".pattern" do
+    it "returns an array of notes in the order of the pattern" do
+      scale = Medley::Scale.new("Cmaj")
+      scale.pattern(1, 6, 4, 5).should eq ["C", "A", "F", "G"]
+    end
+    it "raises an error when you pass 0 in the pattern" do
+      scale = Medley::Scale.new("Cmaj")
+      expect_raises(Medley::InvalidPatternError, "Note arrays are not 0 based index") do
+        scale.pattern(0, 1)
+      end
+    end
+    it "wraps around if the value is greater than 7" do
+      scale = Medley::Scale.new("Cmaj")
+      scale.pattern(8, 12, 4, 10).should eq ["C", "G", "F", "E"]
+    end
+  end
 end

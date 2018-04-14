@@ -39,11 +39,15 @@ other_note.root_matches?(note) #=> true
 
 # Play with a scale
 scale = Medley::Scale.new("Cmaj")
-puts scale.notes #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
+scale.notes #=> ["C", "D", "E", "F", "G", "A", "B", "C"]
 
 # Get the flats or sharps from a key of a scale
 scale = Medley::Scale.new("Bbmaj")
-puts scale.key.flats #=> ["Bb", "Eb"]
+scale.key.flats #=> ["Bb", "Eb"]
+
+# Learn note patterns from a scale
+scale = Medley::Scale.new("Cmaj")
+scale.pattern(1, 6, 4, 5) #=> ["C", "A", "F", "G"]
 ```
 
 ## Development
