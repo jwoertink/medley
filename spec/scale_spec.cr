@@ -18,6 +18,11 @@ describe Medley::Scale do
       scale.notes.should eq(["D", "E", "F#", "G", "A", "B", "C#", "D"])
     end
 
+    it "returns an array of letters in A Phrygian scale order" do
+      scale = Medley::Scale.new("Aphrygian")
+      scale.notes.should eq(["A", "Bb", "C", "D", "E", "F", "G", "A"])
+    end
+
     it "returns an array of letters Bb Major scale order" do
       scale = Medley::Scale.new("Bbmaj")
       scale.notes.should eq(["Bb", "C", "D", "Eb", "F", "G", "A", "Bb"])

@@ -1,8 +1,15 @@
 module Medley
   class Scale
     PATTERNS = {
-      "maj": %w(1 1 .5 1 1 1 .5),
-      "min": %w(1 .5 1 1 .5 1 1)
+      "maj":        %w(W W H W W W H), # aka ionian
+      "min":        %w(W H W W H W W), # aka aeolian
+      "ionian":     %w(W W H W W W H), # aka major
+      "dorian":     %w(W H W W W H W),
+      "phrygian":   %w(H W W W H W W),
+      "lydian":     %w(W W W H W W H),
+      "mixolydian": %w(W W H W W H W),
+      "aeolian":    %w(W H W W H W W), # aka minor
+      "locrian":    %w(H W W H W W W),
     }
 
     getter :name
@@ -12,8 +19,8 @@ module Medley
 
     def initialize(scale : String)
       @name = scale
-      scale.match(/(\w+)(maj|min)/)
-      @pattern = PATTERNS[$2]
+      scale.match(/(\w+)(#{PATTERNS.keys.join("|")})/)
+      @pattern = PATTERNS[$2.downcase]
       @root = $1
       @notes = [] of String
       build_scale
@@ -42,9 +49,9 @@ module Medley
       @notes << note.name
       @pattern.each do |step|
         new_note = case step
-        when "1"
+        when "W"
           Medley::Note.new(note.wholestep_up)
-        when ".5"
+        when "H"
           Medley::Note.new(note.halfstep_up)
         else Medley::Note.new("C")
         end
