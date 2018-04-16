@@ -34,6 +34,10 @@ module Medley
       Medley::Key.new(self)
     end
 
+    def chord(note : String)
+      Medley::Chord.new(self, note)
+    end
+
     def pattern(*values : Int32)
       raise Medley::InvalidPatternError.new("Note arrays are not 0 based index") if values.includes?(0)
       results = [] of String
