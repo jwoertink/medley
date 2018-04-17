@@ -1,5 +1,10 @@
 module Medley
   class Chord
+    include Comparable(Chord)
+
+    getter :scale
+    getter :root
+
     def initialize(scale : Scale, root : String)
       @scale = scale
       @root = root
@@ -8,7 +13,11 @@ module Medley
     end
 
     def to_s(io)
-      io << "#{@root} (#{@notes.join(" ")})"
+      io << "#{@root}#{degree} (#{@notes.join(" ")})"
+    end
+
+    def ==(other : Chord)
+      self.scale.name == other.scale.name && self.root == other.root
     end
 
     def notes
@@ -20,6 +29,18 @@ module Medley
       root_index = range.index(@root).as(Int32)
       pattern.each do |i|
         @notes << range[root_index + (i - 1)]
+      end
+    end
+
+    private def degree
+      index = @scale.notes.index(@root).as(Int32)
+      case Medley::Scale::DEGREES[@scale.mode][index]
+      when "m"
+        "m"
+      when "d"
+        "dim"
+      else
+        ""
       end
     end
   end

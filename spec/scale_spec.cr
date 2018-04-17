@@ -1,7 +1,6 @@
 require "./spec_helper"
 
 describe Medley::Scale do
-
   describe ".notes" do
     it "returns an array of letters in C major scale order" do
       scale = Medley::Scale.new("Cmaj")
@@ -55,6 +54,47 @@ describe Medley::Scale do
     it "wraps around if the value is greater than 7" do
       scale = Medley::Scale.new("Cmaj")
       scale.pattern(8, 12, 4, 10).should eq ["C", "G", "F", "E"]
+    end
+  end
+
+  describe ".chords" do
+    describe "major scales" do
+      it "returns an array of chords" do
+        scale = Medley::Scale.new("Cmaj")
+        scale.chords[0].to_s.should eq "C (C E G)"
+        scale.chords[1].to_s.should eq "Dm (D F A)"
+        scale.chords[2].to_s.should eq "Em (E G B)"
+        scale.chords[3].to_s.should eq "F (F A C)"
+        scale.chords[4].to_s.should eq "G (G B D)"
+        scale.chords[5].to_s.should eq "Am (A C E)"
+        scale.chords[6].to_s.should eq "Bdim (B D F)"
+      end
+    end
+
+    describe "minor scales" do
+      it "returns an array of chords" do
+        scale = Medley::Scale.new("Amin")
+        scale.chords[0].to_s.should eq "Am (A C E)"
+        scale.chords[1].to_s.should eq "Bdim (B D F)"
+        scale.chords[2].to_s.should eq "C (C E G)"
+        scale.chords[3].to_s.should eq "Dm (D F A)"
+        scale.chords[4].to_s.should eq "Em (E G B)"
+        scale.chords[5].to_s.should eq "F (F A C)"
+        scale.chords[6].to_s.should eq "G (G B D)"
+      end
+    end
+
+    describe "phrygian scales" do
+      it "returns an array of chords" do
+        scale = Medley::Scale.new("Aphrygian")
+        scale.chords[0].to_s.should eq "Am (A C E)"
+        scale.chords[1].to_s.should eq "Bb (Bb D F)" # TODO: Shoud this be A#? Doesn't make sense due to the direction. (https://www.scales-chords.com/scaleinfo.php?skey=A&sname=phrygian)
+        scale.chords[2].to_s.should eq "C (C E G)"
+        scale.chords[3].to_s.should eq "Dm (D F A)"
+        scale.chords[4].to_s.should eq "Edim (E G Bb)"
+        scale.chords[5].to_s.should eq "F (F A C)"
+        scale.chords[6].to_s.should eq "Gm (G Bb D)"
+      end
     end
   end
 end

@@ -12,7 +12,20 @@ module Medley
       "locrian":    %w(H W W H W W W),
     }
 
+    DEGREES = {
+      "maj":        %w(M m m M D m d), # aka ionian
+      "min":        %w(m d M m m M M), # aka aeolian
+      "ionian":     %w(M m m M D m d), # aka major
+      "dorian":     %w(m m M M m d M),
+      "phrygian":   %w(m M M m d M m),
+      "lydian":     %w(M M m d M m m),
+      "mixolydian": %w(M m d M m m M),
+      "aeolian":    %w(m d M m m M M), # aka minor
+      "locrian":    %w(d M m m M M m),
+    }
+
     getter :name
+    getter :mode
 
     @pattern : Array(String)
     @root : String
@@ -20,6 +33,7 @@ module Medley
     def initialize(scale : String)
       @name = scale
       scale.match(/(\w+)(#{PATTERNS.keys.join("|")})/)
+      @mode = $2.downcase.as(String)
       @pattern = PATTERNS[$2.downcase]
       @root = $1
       @notes = [] of String
@@ -36,6 +50,12 @@ module Medley
 
     def key
       Medley::Key.new(self)
+    end
+
+    def chords
+      @notes.to_set.map do |note|
+        Medley::Chord.new(self, note)
+      end
     end
 
     def chord_for(note : String)
