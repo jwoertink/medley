@@ -38,7 +38,7 @@ module Medley
       Medley::Key.new(self)
     end
 
-    def chord(note : String)
+    def chord_for(note : String)
       Medley::Chord.new(self, note)
     end
 
