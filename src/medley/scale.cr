@@ -26,6 +26,10 @@ module Medley
       build_scale
     end
 
+    def to_s(io)
+      io << "#{@name} (#{@notes.join(" ")})"
+    end
+
     def notes
       @notes
     end

@@ -7,6 +7,10 @@ module Medley
       build_chord(1, 3, 5)
     end
 
+    def to_s(io)
+      io << "#{@root} (#{@notes.join(" ")})"
+    end
+
     def notes
       @notes
     end
